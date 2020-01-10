@@ -13,13 +13,13 @@ http://www.mulesoft.org/schema/mule/db http://www.mulesoft.org/schema/mule/db/cu
 	</http:listener-config>
 	<flow name="operatorsFlow" doc:id="3405bc54-58b7-4831-8c84-ebca64b6e930" >
 		<http:listener doc:name="Listener" doc:id="740cbe47-e9d0-4b28-94fb-04fb6b266c5a" config-ref="HTTP_Listener_config" path="/operators"/>
-		<set-variable value='&lt; xml version="1.0" encoding="UTF-8”?&gt;\&lt; cities&gt;&lt; city name="milan" country="italy" pop="5"/&gt;&lt; city name="paris" country="france" pop="7"/&gt;&lt; city name="munich" country="germany" pop="4"/&gt;&lt; city name="lyon" country="france" pop="2"/&gt;&lt; city name="venice" country="italy" pop="1"/&gt;' doc:name="Set Variable" doc:id="443190d3-fb6f-4b68-beb7-55d3257eb71c" variableName="dbstring"/>
+		<set-variable value='&lt; xml version="1.0" encoding="UTF-8”?&gt;\&lt; cities&gt;&lt; city name="milan" country="italy" pop="5"/&gt;&lt; city name="paris" country="france" pop="7"/&gt;&lt; city name="munich" country="germany" pop="4"/&gt;&lt; city name="lyon" country="france" pop="2"/&gt;&lt; city name="venice" country="italy" pop="1"/&gt;' doc:name="Set Variable" doc:id="443190d3-fb6f-4b68-beb7-55d3257eb71c" variableName="dBstring"/>
 		<ee:transform doc:name="Transform Message" doc:id="ff00719d-4e8d-4184-972a-f30f5be68bba" >
 			<ee:message >
 				<ee:set-payload ><![CDATA[%dw 2.0
 output application/xml
 ---
-read(vars.dbstring, "application/xml")]]></ee:set-payload>
+read(vars.dBstring, "application/xml")]]></ee:set-payload>
 			</ee:message>
 		</ee:transform>
 		<db:bulk-insert doc:name="Bulk insert" doc:id="fdc1c22e-6030-4cd8-80a1-0d88e8b99ff9" />
